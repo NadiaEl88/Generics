@@ -54,18 +54,43 @@ import java.util.List;
          war.
          */
         public boolean add(A a){
-            boolean added = List.add(a);
+          if (size == 0) {
+          speicher[size] = a;
+          size++;
+          return true;
+    }
+    if (size < speicher.length) {
+      for (int i = 0; i < speicher.length; i++) {
+        if (Objects.isNull(speicher[i])) {
+          speicher[i] = a;
+          size++;
+          return true;
         }
-
+      }
+      return true;
+    }
+    return false;
+  }
         /**
          * Diese Methode soll ein Object aus der Liste löschen.
          * True wird zurückgegeben wenn das Löschen erfolgreich
          war.
          */
         public boolean remove(Object o){
-            boolean removed = List.remove(o);
-            return removed;
-        }
+           if (size == 0) {
+             return false;
+           }
+
+    for (int i = 0; i < speicher.length; i++) {
+      if (speicher[i].equals(o)) {
+        speicher[i] = null;
+        size--;
+        return true;
+      }
+    }
+
+    return false;
+  }
 
 
         /**
